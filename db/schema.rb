@@ -118,11 +118,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_16_175557) do
   end
 
   create_table "conversations", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "model_config_id", null: false
+    t.bigint "model_config_id", null: false
     t.boolean "search_collections", default: true
     t.integer "messages_count"
     t.integer "source"
@@ -196,7 +196,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_16_175557) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "conversation_id", null: false
+    t.bigint "conversation_id", null: false
     t.string "author_type"
     t.bigint "author_id", null: false
     t.jsonb "statistics"

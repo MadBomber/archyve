@@ -136,7 +136,7 @@ end
 
 # DEV
 #
-if Rails.env == "development"
+if Rails.env.development?
   if default_client
       puts <<~TEXT
       To authenticate with the default API client, set these headers:

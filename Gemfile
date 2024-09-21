@@ -1,126 +1,103 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-ruby "~> 3"
+ruby File.open('.ruby-version', 'r').read
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1.3", ">= 7.1.3.2"
+##############################
+## Primary MVC Frameworks
 
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+gem 'rails', '~> 7.1.3', '>= 7.1.3.2'  # Full-stack web application framework.
+gem 'pg'                               # Pg is the Ruby interface to the PostgreSQL RDBMS
+gem 'puma', '>= 5.0'                   # Puma is a simple, fast, threaded, and highly parallel HTTP 1.1 server for Ruby/Rack applications
 
-# Use sqlite3 as the database for Active Record
-# gem "sqlite3", "~> 1.4"
-gem "pg"
+gem 'sprockets-rails'                  # Sprockets Rails integration
 
-# Use the Puma web server [https://github.com/puma/puma]
-gem "puma", ">= 5.0"
 
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+############
+# AI-related
+gem 'baran', '~> 0.1.12'    # Text Splitter for Large Language Model Datasets
+gem 'ruby-openai', '~> 7.1' # OpenAI API + Ruby! 🤖🩵
 
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
 
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
+#################
+# Background Jobs
+gem 'redis', '>= 4.0.1'         # A Ruby client library for Redis
+gem 'sidekiq', '~> 7.2'         # Simple, efficient background processing for Ruby
+gem 'sidekiq-cron', '~> 1.12'   # Scheduler/Cron for Sidekiq jobs
 
-# Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
-gem "tailwindcss-rails"
 
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
+################
+# Authentication
+gem 'devise', '~> 4.9'  # Flexible authentication solution for Rails with Warden
 
-# Use Redis adapter to run Action Cable in production
-gem "redis", ">= 4.0.1"
 
-# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
-# gem "kredis"
+##########
+# graph DB
+gem 'activegraph', '11.5.0.beta.2'  # A graph database for Ruby
+gem 'async', '2.11.0'               # A concurrency framework for Ruby.
+gem 'neo4j-ruby-driver', '~> 4.4'
 
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
 
-# Jruby does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[jruby]
+##################
+# error monitoring
+gem 'sentry-rails'    # A gem that provides Rails integration for the Sentry error logger
+gem 'sentry-ruby'     # A gem that provides a client interface for the Sentry error logger
+gem 'sentry-sidekiq'  # A gem that provides Sidekiq integration for the Sentry error logger
 
-# Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
 
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2"
+###############
+# Frontend Gems
+gem 'font-awesome-rails', '~> 4.7'  # An asset gemification of the font-awesome icon font library
+gem 'importmap-rails'               # Use ESM with importmap to manage modern JavaScript in Rails without transpiling or bundling.
+gem 'sassc-rails'                   # Integrate SassC-Ruby into Rails.
+gem 'stimulus-rails'                # A modest JavaScript framework for the HTML you already have.
+gem 'tailwindcss-rails'             # Integrate Tailwind CSS with the asset pipeline in Rails.
+gem 'turbo-rails'                   # The speed of a single-page web application without having to write any JavaScript.
+
+
+##############
+# Backend Gems
+gem 'aasm', '~> 5.5'                # State machine mixin for Ruby objects
+gem 'activestorage', '~> 7.1'       # Local and cloud file storage framework.
+gem 'bootsnap', require: false      # Boot large ruby/rails apps faster
+gem 'httparty', '~> 0.21.0'         # Makes http fun! Also, makes consuming restful web services dead easy.
+gem 'image_processing', '~> 1.2'    # High-level wrapper for processing images for the web with ImageMagick or libvips.
+gem 'jbuilder'                      # Create JSON structures via a Builder-style DSL
+gem 'motor-admin', '~> 0.4.26'      # Low-code Admin panel and Business intelligence
+gem 'open3', '~> 0.2.1'             # Popen, but with stderr, too
+gem 'pagy', '~> 8.0'                # The best pagination ruby gem
+gem 'pdf-reader', '~> 2.12'         # A library for accessing the content of PDF files
+gem 'rails_admin', '~> 3.0.beta2'   # Admin for Rails
+gem 'tzinfo-data', platforms: %i[jruby]
+
+
+##################################################
+## non-production Environment Groups
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[mri]
-  gem "factory_bot_rails"
-  gem "timecop", "~> 0.9.10"
+  gem 'amazing_print'               # Pretty print Ruby objects with proper indentation and colors
+  gem 'debug', platforms: %i[mri]   # Debugging functionality for Ruby
+  gem 'debug_me'                    # A tool to print the labeled value of variables.
+  gem 'factory_bot_rails'           # factory_bot_rails provides integration between factory_bot and rails 5.0 or newer
+  gem 'pry-rails', '~> 0.3.9'       # Use Pry as your rails console
+  gem 'rubocop', '~> 1.62'          # Automatic Ruby code style checking tool.
+  gem 'rubocop-rails', '~> 2.24'    # Automatic Rails code style checking tool.
+  gem 'rubocop-rspec', '~> 2.28'    # Code style checking for RSpec files
+  gem 'timecop', '~> 0.9.10'        # A gem providing "time travel" and "time freezing" capabilities, making it dead simple to test time-dependent code.  It provides a unified method to mock Time.now, Date.today, and DateTime.now in a single call.
 end
 
 group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
-
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
-
-  gem "ruby-lsp", "~> 0.14.6"
-  gem "ruby-lsp-rails", "~> 0.3.3"
+  gem 'ruby-lsp', '~> 0.14.6'      # An opinionated language server for Ruby
+  gem 'ruby-lsp-rails', '~> 0.3.3' # A Ruby LSP addon for Rails
+  gem 'web-console'                # A debugging tool for your Ruby on Rails applications.
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "faker"
-  gem "fuubar"
-  gem "json-schema"
-  gem "rspec-uuid"
-  gem "selenium-webdriver"
+  gem 'capybara'                   # Capybara aims to simplify the process of integration testing Rack applications, such as Rails, Sinatra or Merb
+  gem 'faker'                      # Easily generate fake data
+  gem 'fuubar'                     # the instafailing RSpec progress bar formatter
+  gem 'json-schema'                # Ruby JSON Schema Validator
+  gem 'rspec-rails', '~> 6.1'      # RSpec for Rails
+  gem 'rspec-uuid'                 # RSpec::UUID
+  gem 'selenium-webdriver'         # Selenium is a browser automation tool for automated testing of webapps and more
 end
 
-gem "devise", "~> 4.9"
-
-gem "pry-rails", "~> 0.3.9"
-
-gem "rspec-rails", "~> 6.1"
-
-gem "sidekiq", "~> 7.2"
-gem "sidekiq-cron", "~> 1.12"
-
-gem "rails_admin", "~> 3.0.beta2"
-gem "sassc-rails"
-
-gem "activestorage", "~> 7.1"
-
-gem "font-awesome-rails", "~> 4.7"
-
-gem "httparty", "~> 0.21.0"
-
-gem "pdf-reader", "~> 2.12"
-
-gem "aasm", "~> 5.5"
-
-gem "rubocop", "~> 1.62"
-gem "rubocop-rails", "~> 2.24"
-gem "rubocop-rspec", "~> 2.28"
-
-gem "pagy", "~> 8.0"
-
-gem "motor-admin", "~> 0.4.26"
-
-gem "baran", "~> 0.1.12"
-
-# error monitoring
-gem "sentry-rails"
-gem "sentry-ruby"
-gem "sentry-sidekiq"
-
-gem "ruby-openai", "~> 7.1"
-
-# graph DB
-gem "activegraph", "11.5.0.beta.2"
-gem "async", "2.11.0"
-gem "neo4j-ruby-driver", "~> 4.4"
-
-gem "open3", "~> 0.2.1"
